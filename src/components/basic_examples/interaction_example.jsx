@@ -19,7 +19,7 @@ class InteractionExample extends Component {
 				<div className="component">
 					<h3>Klasna komponenta</h3>
 					<p>status - Komponenta je učitana</p>
-					<button onClick={() => {this.setState({clicks: this.state.clicks + 1})}}>Klikni me</button>
+			<button onClick={() => {this.setState({clicks: this.state.clicks + 1})}}>Klikni me: {this.state.clicks}</button>
 				</div>
 			);
 		} else {

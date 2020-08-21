@@ -4,6 +4,9 @@ import KlasnaKomponenta from './components/basic_examples/class_component';
 import FunkcijskaKomponenta from './components/basic_examples/function_component';
 import KlasnaKomponentaLifeCycle from './components/basic_examples/class_component_lifecycle';
 import NestedComponentExample from './components/basic_examples/nesting_example';
+import FunctionComponentLifecycle from './components/basic_examples/function_component_lifecycle';
+import InteractionExample from './components/basic_examples/interaction_example';
+import ComplexData from './components/basic_examples/complex_data_examples/complex_data';
 
 function App() {
   return (
@@ -23,11 +26,17 @@ function App() {
         <section>
           <small>Osnovni primjeri podkomponenti</small>
           <NestedComponentExample value="Props 	 komponente" />
+					<InteractionExample />
         </section>
         {/* Lifecylce examples */}
         <section>
           <small>Životni ciklus komponente</small>
           <KlasnaKomponentaLifeCycle value={"Props lifecycle class komponente"} />
+          <FunctionComponentLifecycle value={"Props lifecycle class komponente"} />
+        </section>
+				<section>
+          <small>Životni ciklus komponente</small>
+          <ComplexData />
         </section>
       </article>
     </div>

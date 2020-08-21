@@ -1,11 +1,12 @@
 import React from 'react'
+import { useEffect } from 'react'
 
 function FunctionComponent() {
-	console.log('render - funkcijska komponenta')
+
 	return (
 		<div className="component">
-			<h3>Function komponenta</h3>
-			<p>Ovo je komponenta vrste Class</p>
+			<h3>Primjer 2: Osnovna funkcijska komponenta</h3>
+			<p>Ovo je funkcijska komponenta</p>
 		</div>
 	)
 }

@@ -16,8 +16,8 @@ class ClassComponentLifecycle extends Component {
 		if (this.state.mounted) {
 			return (
 				<div className="component">
-					<h3>Klasna komponenta</h3>
-					<p>status - Komponenta je učitana</p>
+					<h3>Primjer 3: Životni ciklus klasne komponente</h3>
+					<p>status - komponenta je učitana</p>
 				</div>
 			);
 		} else {
