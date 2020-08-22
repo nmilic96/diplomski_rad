@@ -5,7 +5,7 @@ const ComplexData = () => {
 	const [ error, setError ] = useState(null);
 
 	useEffect(() => {
-		fetch('https://jsonplaceholder.typicode.com/posts').then((response) => response.json()).then(
+		fetch('https://jsonplaceholder.typicode.com/albums/1/photos').then((response) => response.json()).then(
 			(json) => setData(json),
 			(error) => {
 				setError(error);
@@ -24,8 +24,8 @@ const ComplexData = () => {
 		return items.map((item, index) => {
 			return (
 				<li key={index}>
+					<img src={item.url} alt={item.title} />
 					<h4>{item.title}</h4>
-					<p>{item.body}</p>
 				</li>
 			);
 		});
