@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/diplomski_rad/precache-manifest.ad38d9f4dac250ee2c7d16a46bc55314.js"
+  "/diplomski_rad/precache-manifest.855627df9f0d53f03ad9f5ad9ef9c773.js"
 );
 
 self.addEventListener('message', (event) => {
