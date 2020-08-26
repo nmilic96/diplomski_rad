@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.scss';
+import data from './posts.json';
 //import KlasnaKomponenta from './components/basic_examples/class_component';
 //import FunkcijskaKomponenta from './components/basic_examples/function_component';
 //import KlasnaKomponentaLifeCycle from './components/basic_examples/class_component_lifecycle';
@@ -15,6 +16,12 @@ import './App.scss';
 import MainExample from './components/main_example'
 
 function App() {
+
+  
+  useEffect(() => {
+    localStorage.setItem('data', JSON.stringify(data));
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">

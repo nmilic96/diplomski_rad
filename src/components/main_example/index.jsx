@@ -3,25 +3,22 @@ import Post from './post';
 import Loader from './loader';
 import Notif from './notif';
 import Sort from './sort';
+import Search from './search';
 
-const Index = () => {
+const Index = (props) => {
 	const [ data, setData ] = useState(null);
 	const [ activePost, setActivePost ] = useState(null);
 	const [ notif, setNotif ] = useState({ text: '', type: '', color: '' });
 	const [ showNotif, setShowNotif ] = useState(false);
 	const [ error, setError ] = useState(null);
 
-	const fetchData = () => {
-		fetch('https://jsonplaceholder.typicode.com/posts').then((response) => response.json()).then(
-			(json) => setData(json),
-			(error) => {
-				setError(error);
-			}
-		);
+	const getData = () => {
+		let posts = JSON.parse(localStorage.getItem('data'))
+		setData(posts);
 	};
-	
+
 	useEffect(() => {
-		fetchData()
+		getData();
 	}, []);
 
 	const addNewPost = () => {
@@ -30,7 +27,7 @@ const Index = () => {
 			return (ids = Math.max(...ids) + 1);
 		};
 
-		let posts = [ ...data ];
+		let posts = data;
 		let newPost = {
 			userId: 1,
 			id: handlePostId(posts),
@@ -41,6 +38,7 @@ const Index = () => {
 		let newData = [ newPost, ...data ];
 		handleNotif(`Dodana nova objava: ID: ${newPost.id}`, 'add', '#4CAF50');
 		setData(newData);
+		localStorage.setItem('data', JSON.stringify(newData));
 	};
 
 	const removePost = (index) => {
@@ -83,6 +81,7 @@ const Index = () => {
 			return (
 				<React.Fragment>
 					<div className="layout">
+						<Search />
 						<div className="row">
 							<button
 								className="btn"
