@@ -11,13 +11,17 @@ const Index = () => {
 	const [ showNotif, setShowNotif ] = useState(false);
 	const [ error, setError ] = useState(null);
 
-	useEffect(() => {
+	const fetchData = () => {
 		fetch('https://jsonplaceholder.typicode.com/posts').then((response) => response.json()).then(
 			(json) => setData(json),
 			(error) => {
 				setError(error);
 			}
 		);
+	};
+	
+	useEffect(() => {
+		fetchData()
 	}, []);
 
 	const addNewPost = () => {
