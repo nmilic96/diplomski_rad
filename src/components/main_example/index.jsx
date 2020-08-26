@@ -81,7 +81,7 @@ const Index = (props) => {
 			return (
 				<React.Fragment>
 					<div className="layout">
-						<Search />
+						<Search data={data} setData={setData} />
 						<div className="row">
 							<button
 								className="btn"
