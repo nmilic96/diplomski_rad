@@ -1,6 +1,6 @@
 import React from 'react'
 
-function noFragmentExample() {
+function NoFragmentExample() {
 	return (
 		<div>
 			<header>...</header>
@@ -9,4 +9,4 @@ function noFragmentExample() {
 	)
 }
 
-export default noFragmentExample
+export default NoFragmentExample
