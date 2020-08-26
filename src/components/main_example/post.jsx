@@ -1,8 +1,9 @@
 import React from 'react';
 import Loader from './loader';
 import { PureComponent } from 'react';
+import { Component } from 'react';
 
-class Post extends PureComponent {
+class Post extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -22,11 +23,20 @@ class Post extends PureComponent {
 		});
 	}
 
+	shouldComponentUpdate(nextProps) {
+		if (this.state.loaded) {
+			return ((nextProps.data !== this.props.data) || (nextProps.active !== this.props.active))
+		} else {
+			return true
+		}
+	}
+
 	handleOnClick = () => {
 		this.props.setActivePost(this.props.index);
 	};
 
 	render() {
+		console.log('render', this.props.index)
 		if (this.state.loaded) {
 			return (
 				<div className={`post ${this.props.active && 'post--active'}`} onClick={this.handleOnClick}>
