@@ -4,7 +4,6 @@ import Loader from './loader';
 import Notif from './notif';
 import Sort from './sort';
 import Search from './search';
-import { useRef } from 'react';
 
 const Index = (props) => {
 	const [ data, setData ] = useState(null);
@@ -101,7 +100,7 @@ const Index = (props) => {
 			</React.Fragment>
 		);
 	} else {
-		return <div />;
+		return <Loader />;
 	}
 };
 

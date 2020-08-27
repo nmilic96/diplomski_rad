@@ -201,6 +201,7 @@ button {
   font-size: 1.875rem;
   font-weight: 800;
   color: $color-primary;
+  transform: scale(2);
 }
 
 .notif {
@@ -235,4 +236,13 @@ button {
   &:focus, &:active {
     border-color: $color-primary;
   }
+}
+
+.loading-wrapper {
+  transition: $transition;
+}
+
+.hidden {
+  height: 200px;
+  background: rgba($color-primary, 0.05);
 }

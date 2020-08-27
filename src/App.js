@@ -13,26 +13,26 @@ import data from './posts.json';
 //import Immutability from './components/immutability'
 //import Conditional from './components/conditional_rendering'
 
-import MainExample from './components/main_example'
+import MainExample from './components/main_example';
 
 function App() {
+	useEffect(() => {
+		window.scrollTo(0, 0);
 
-  
-  useEffect(() => {
-    if (!localStorage.getItem('data')) {
-      localStorage.setItem('data', JSON.stringify(data));
-    }
-  }, []);
+		if (!localStorage.getItem('data')) {
+			localStorage.setItem('data', JSON.stringify(data));
+		}
+	}, []);
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Diplomski rad</h1>
-        <h2>Nikola Milić</h2>
-      </header>
-      <article>
-        <MainExample />
-        {/* <section>
+	return (
+		<div className="App">
+			<header className="App-header">
+				<h1>Diplomski rad</h1>
+				<h2>Nikola Milić</h2>
+			</header>
+			<article>
+				<MainExample />
+				{/* <section>
           <small>Osnovni primjeri komponenti</small>
           <KlasnaKomponenta value="Props klasne komponente" />
           <FunkcijskaKomponenta value="Props function komponente" />
@@ -67,10 +67,9 @@ function App() {
           <small>Kompleksni podaci</small>
           <ComplexData />
         </section> */}
-      </article>
-    </div>
-  );
+			</article>
+		</div>
+	);
 }
 
 export default App;
-
