@@ -19,7 +19,9 @@ function App() {
 
   
   useEffect(() => {
-    localStorage.setItem('data', JSON.stringify(data));
+    if (!localStorage.getItem('data')) {
+      localStorage.setItem('data', JSON.stringify(data));
+    }
   }, []);
 
   return (
