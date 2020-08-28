@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e2826838019893b6d8b81d8bdf8c61f4",
+    "revision": "3a5192cc14010c5bc3c68a158f6bc82b",
     "url": "/diplomski_rad/index.html"
   },
   {
-    "revision": "158f3baac3fc7ae3185e",
+    "revision": "1d7e67b42379f1a21b66",
     "url": "/diplomski_rad/static/css/main.b2b1f04e.chunk.css"
   },
   {
-    "revision": "1669e2e44c19808fece8",
-    "url": "/diplomski_rad/static/js/2.a4dc1454.chunk.js"
+    "revision": "844534251804d7fa0686",
+    "url": "/diplomski_rad/static/js/2.bb34502e.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/diplomski_rad/static/js/2.a4dc1454.chunk.js.LICENSE.txt"
+    "url": "/diplomski_rad/static/js/2.bb34502e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "158f3baac3fc7ae3185e",
-    "url": "/diplomski_rad/static/js/main.af99983d.chunk.js"
+    "revision": "1d7e67b42379f1a21b66",
+    "url": "/diplomski_rad/static/js/main.d6fc4aa2.chunk.js"
   },
   {
     "revision": "fe3a7e5d0a05c36aaca9",
