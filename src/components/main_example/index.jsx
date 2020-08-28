@@ -9,12 +9,26 @@ const Index = (props) => {
 	const [ data, setData ] = useState(null);
 	const [ activePost, setActivePost ] = useState(null);
 	const [ notif, setNotif ] = useState({ text: '', type: '', color: '' });
+	const [ action, setAction ] = useState(null);
 	const [ showNotif, setShowNotif ] = useState(false);
 
 	useEffect(() => {
 		let posts = JSON.parse(localStorage.getItem('data'));
 		setData(posts);
 	}, []);
+
+	useEffect(
+		() => {
+			if (action === 'update') {
+				localStorage.setItem('data', JSON.stringify(data))
+			}
+
+			return () => {
+				setAction(null);
+			};
+		},
+		[ data ]
+	);
 
 	const addNewPost = () => {
 		const handlePostId = (items) => {
@@ -31,7 +45,7 @@ const Index = (props) => {
 		let newData = [ newPost, ...data ];
 		handleNotif(`Dodana nova objava: ID: ${newPost.id}`, 'add', '#4CAF50');
 		setData(newData);
-		localStorage.setItem('data', JSON.stringify(newData));
+		setAction('update');
 	};
 
 	const removePost = (index) => {
@@ -40,7 +54,7 @@ const Index = (props) => {
 		posts.splice(posts.indexOf(targetPost), 1);
 		handleNotif(`Obrisana objava: ID: ${targetPost.id}`, 'remove', '#F44336');
 		setData(posts);
-		localStorage.setItem('data', JSON.stringify(posts));
+		setAction('update');
 	};
 
 	const handleNotif = (text, type, color) => {
@@ -63,6 +77,8 @@ const Index = (props) => {
 						postData={item}
 						active={activePost === item.id}
 						data={data}
+						setData={setData}
+						setAction={setAction}
 						setActivePost={setActivePost}
 						removePost={removePost}
 					/>

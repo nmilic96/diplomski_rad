@@ -5,6 +5,7 @@ class Post extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			loaded: false,
 			visible: false,
 			title: '',
 			body: '',
@@ -19,6 +20,7 @@ class Post extends Component {
 			([ item ]) => {
 				if (item.intersectionRatio === 1) {
 					this.setState({
+						loaded: true,
 						visible: true,
 						title: this.props.postData.title,
 						body: this.props.postData.body.replace(/\n/g, ' '),
@@ -30,7 +32,9 @@ class Post extends Component {
 		);
 
 		if (this.ref.current) {
-			observer.observe(this.ref.current);
+			setTimeout(() => {
+				observer.observe(this.ref.current);
+			}, 10);
 		}
 	}
 
@@ -42,6 +46,21 @@ class Post extends Component {
 			this.state.visible !== nextState.visible
 		);
 	}
+
+	componentDidUpdate(prevState) {
+		if (prevState.title !== this.state.title || prevState.body !== this.props.body) {
+			this.updateData();
+		}
+	}
+
+	updateData = () => {
+		let data = [...this.props.data];
+		let item = data.find((item) => item.id === this.state.id);
+		item.title = this.state.title;
+		item.body = this.state.body;
+		this.props.setData(data)
+		this.props.setAction('update');
+	};
 
 	handleOnClick = () => {
 		this.props.setActivePost(this.props.index);

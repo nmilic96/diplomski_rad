@@ -73,4 +73,4 @@ function Sort(props) {
 	);
 }
 
-export default Sort;
+export default React.memo(Sort);
