@@ -7,6 +7,7 @@ class Post extends Component {
 		this.state = {
 			loaded: false,
 			visible: false,
+			action: null,
 			title: '',
 			body: '',
 			id: ''
@@ -47,18 +48,21 @@ class Post extends Component {
 		);
 	}
 
-	componentDidUpdate(prevState) {
-		if (prevState.title !== this.state.title || prevState.body !== this.props.body) {
+	componentDidUpdate() {
+		if (this.state.action) {
 			this.updateData();
+			return () => {
+				this.setState({ action: null });
+			};
 		}
 	}
 
 	updateData = () => {
-		let data = [...this.props.data];
+		let data = [ ...this.props.data ];
 		let item = data.find((item) => item.id === this.state.id);
 		item.title = this.state.title;
 		item.body = this.state.body;
-		this.props.setData(data)
+		this.props.setData(data);
 		this.props.setAction('update');
 	};
 
@@ -92,7 +96,7 @@ class Post extends Component {
 										type="text"
 										defaultValue={this.state.title}
 										onChange={(e) => {
-											this.setState({ title: e.target.value });
+											this.setState({ title: e.target.value, action: 'update' });
 										}}
 										placeholder={'Dodaj naslov'}
 									/>
@@ -100,7 +104,7 @@ class Post extends Component {
 								<p>
 									<textarea
 										onChange={(e) => {
-											this.setState({ body: e.target.value });
+											this.setState({ body: e.target.value, action: 'update' });
 										}}
 										defaultValue={this.state.body}
 										placeholder={'Dodaj opis'}
