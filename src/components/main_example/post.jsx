@@ -5,7 +5,6 @@ class Post extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			loaded: false,
 			visible: false,
 			action: null,
 			title: '',
@@ -21,7 +20,6 @@ class Post extends Component {
 			([ item ]) => {
 				if (item.intersectionRatio === 1) {
 					this.setState({
-						loaded: true,
 						visible: true,
 						title: this.props.postData.title,
 						body: this.props.postData.body.replace(/\n/g, ' '),
@@ -29,7 +27,7 @@ class Post extends Component {
 					});
 				}
 			},
-			{ root: null, rootMargin: '50px', threshold: 1.0 }
+			{ root: null, rootMargin: '100px', threshold: 1.0 }
 		);
 
 		if (this.ref.current) {
@@ -67,7 +65,7 @@ class Post extends Component {
 	};
 
 	handleOnClick = () => {
-		this.props.setActivePost(this.props.index);
+		this.props.setActivePost(this.props.postData.id);
 	};
 
 	render() {
@@ -78,7 +76,7 @@ class Post extends Component {
 						<button
 							className="post__remove"
 							onClick={() => {
-								this.props.removePost(this.props.index);
+								this.props.removePost(this.props.postData.id);
 							}}
 						>
 							×

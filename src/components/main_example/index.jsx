@@ -4,6 +4,8 @@ import Loader from './loader';
 import Notif from './notif';
 import Sort from './sort';
 import Search from './search';
+import { debounce } from '../../functions/functions';
+import { useCallback } from 'react';
 
 const Index = (props) => {
 	const [ data, setData ] = useState(null);
@@ -13,14 +15,15 @@ const Index = (props) => {
 	const [ showNotif, setShowNotif ] = useState(false);
 
 	useEffect(() => {
-		let posts = JSON.parse(localStorage.getItem('data'));
+		let posts = props.localData;
 		setData(posts);
-	}, []);
+
+	}, [props]);
 
 	useEffect(
 		() => {
-			if (action === 'update') {
-				localStorage.setItem('data', JSON.stringify(data))
+			if (action) {
+				localStorage.setItem('data', JSON.stringify(data));
 			}
 
 			return () => {
@@ -29,6 +32,16 @@ const Index = (props) => {
 		},
 		[ data ]
 	);
+
+	const handleNotif = useCallback(() => {
+		debounce((text, color) => {
+			setNotif({
+				text: text,
+				color: color
+			});
+			setShowNotif(true);
+		}, 200);
+	}, []);
 
 	const addNewPost = () => {
 		const handlePostId = (items) => {
@@ -43,37 +56,25 @@ const Index = (props) => {
 		};
 
 		let newData = [ newPost, ...data ];
-		handleNotif(`Dodana nova objava: ID: ${newPost.id}`, 'add', '#4CAF50');
 		setData(newData);
-		setAction('update');
+		setAction('add');
 	};
 
 	const removePost = (index) => {
 		let posts = [ ...data ];
-		let targetPost = posts.find((item) => item.id === index);
-		posts.splice(posts.indexOf(targetPost), 1);
-		handleNotif(`Obrisana objava: ID: ${targetPost.id}`, 'remove', '#F44336');
-		setData(posts);
-		setAction('update');
-	};
-
-	const handleNotif = (text, type, color) => {
-		setNotif({
-			text: text,
-			type: type,
-			color: color
-		});
-		setShowNotif(true);
+		let filteredPosts = posts.filter((item) => item.id !== index);
+		setData(filteredPosts);
+		setAction('remove');
 	};
 
 	const mapData = (items) => {
 		return (
 			items &&
-			[ ...items ].map((item) => {
+			[ ...items ].map((item, index) => {
 				return (
 					<Post
 						key={item.id}
-						index={item.id}
+						index={index}
 						postData={item}
 						active={activePost === item.id}
 						data={data}
