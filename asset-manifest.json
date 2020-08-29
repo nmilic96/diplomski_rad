@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/diplomski_rad/static/css/main.afba188d.chunk.css",
-    "main.js": "/diplomski_rad/static/js/main.49db9cd6.chunk.js",
-    "main.js.map": "/diplomski_rad/static/js/main.49db9cd6.chunk.js.map",
+    "main.js": "/diplomski_rad/static/js/main.348b203f.chunk.js",
+    "main.js.map": "/diplomski_rad/static/js/main.348b203f.chunk.js.map",
     "runtime-main.js": "/diplomski_rad/static/js/runtime-main.f2f3a613.js",
     "runtime-main.js.map": "/diplomski_rad/static/js/runtime-main.f2f3a613.js.map",
-    "static/js/2.bec8f690.chunk.js": "/diplomski_rad/static/js/2.bec8f690.chunk.js",
-    "static/js/2.bec8f690.chunk.js.map": "/diplomski_rad/static/js/2.bec8f690.chunk.js.map",
+    "static/js/2.79cdefb4.chunk.js": "/diplomski_rad/static/js/2.79cdefb4.chunk.js",
+    "static/js/2.79cdefb4.chunk.js.map": "/diplomski_rad/static/js/2.79cdefb4.chunk.js.map",
     "index.html": "/diplomski_rad/index.html",
-    "precache-manifest.a2ced4dc1dac23ff5a2990e894b229e5.js": "/diplomski_rad/precache-manifest.a2ced4dc1dac23ff5a2990e894b229e5.js",
+    "precache-manifest.e2d8d13e096b33f28780eafd1e3cb358.js": "/diplomski_rad/precache-manifest.e2d8d13e096b33f28780eafd1e3cb358.js",
     "service-worker.js": "/diplomski_rad/service-worker.js",
     "static/css/main.afba188d.chunk.css.map": "/diplomski_rad/static/css/main.afba188d.chunk.css.map",
-    "static/js/2.bec8f690.chunk.js.LICENSE.txt": "/diplomski_rad/static/js/2.bec8f690.chunk.js.LICENSE.txt"
+    "static/js/2.79cdefb4.chunk.js.LICENSE.txt": "/diplomski_rad/static/js/2.79cdefb4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f2f3a613.js",
-    "static/js/2.bec8f690.chunk.js",
+    "static/js/2.79cdefb4.chunk.js",
     "static/css/main.afba188d.chunk.css",
-    "static/js/main.49db9cd6.chunk.js"
+    "static/js/main.348b203f.chunk.js"
   ]
 }
