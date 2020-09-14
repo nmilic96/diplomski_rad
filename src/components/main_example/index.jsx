@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import Post from './post';
 import Loader from './loader';
-import Notif from './notif';
 import Sort from './sort';
 import Search from './search';
-import { debounce } from '../../functions/functions';
-import { useCallback } from 'react';
+import postsData from '../../posts.json';
 
-const Index = (props) => {
-	const [ data, setData ] = useState(null);
+const Index = () => {
+	const [ data, setData ] = useState([]);
 	const [ activePost, setActivePost ] = useState(null);
-	const [ notif, setNotif ] = useState({ text: '', type: '', color: '' });
 	const [ action, setAction ] = useState(null);
-	const [ showNotif, setShowNotif ] = useState(false);
 
 	useEffect(() => {
-		let posts = props.localData;
-		setData(posts);
-
-	}, [props]);
+		if (!localStorage.getItem('data')) {
+			localStorage.setItem('data', JSON.stringify(postsData));
+			setData(postsData);
+		} else {
+			setData(JSON.parse(localStorage.getItem('data')));
+		}
+	}, []);
 
 	useEffect(
 		() => {
@@ -32,16 +31,6 @@ const Index = (props) => {
 		},
 		[ data ]
 	);
-
-	const handleNotif = useCallback(() => {
-		debounce((text, color) => {
-			setNotif({
-				text: text,
-				color: color
-			});
-			setShowNotif(true);
-		}, 200);
-	}, []);
 
 	const addNewPost = () => {
 		const handlePostId = (items) => {
@@ -61,8 +50,7 @@ const Index = (props) => {
 	};
 
 	const removePost = (index) => {
-		let posts = [ ...data ];
-		let filteredPosts = posts.filter((item) => item.id !== index);
+		let filteredPosts = data.filter((item) => item.id !== index);
 		setData(filteredPosts);
 		setAction('remove');
 	};
@@ -70,7 +58,7 @@ const Index = (props) => {
 	const mapData = (items) => {
 		return (
 			items &&
-			[ ...items ].map((item, index) => {
+			items.map((item, index) => {
 				return (
 					<Post
 						key={item.id}
@@ -107,13 +95,6 @@ const Index = (props) => {
 					<p>Broj rezultata: {data.length}</p>
 					<div className="posts">{mapData(data)}</div>
 				</div>
-				<Notif
-					text={notif.text}
-					type={notif.type}
-					color={notif.color}
-					show={showNotif}
-					setShowNotif={setShowNotif}
-				/>
 			</React.Fragment>
 		);
 	} else {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { unstable_trace as trace } from 'scheduler/tracing';
 
 function Sort(props) {
 	const [ sortType, setSortType ] = useState({
@@ -26,16 +27,20 @@ function Sort(props) {
 	);
 
 	const sortById = () => {
-		setSortType({
-			type: 'id',
-			value: !sortType.value
+		trace('Sort list by id', performance.now(), () => {
+			setSortType({
+				type: 'id',
+				value: !sortType.value
+			});
 		});
 	};
 
 	const sortByAlphabet = () => {
-		setSortType({
-			type: 'letter',
-			value: !sortType.value
+		trace('Sort list by alphabet', performance.now(), () => {
+			setSortType({
+				type: 'letter',
+				value: !sortType.value
+			});
 		});
 	};
 

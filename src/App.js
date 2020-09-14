@@ -16,13 +16,8 @@ import data from './posts.json';
 import MainExample from './components/main_example';
 
 function App() {
-	const [ localData, setLocalData ] = useState(data);
-
 	useEffect(() => {
 		window.scrollTo(0, 0);
-		if (!localStorage.getItem('data')) {
-			setLocalData(data);
-		}
 	}, []);
 
 	return (
@@ -31,7 +26,7 @@ function App() {
 				<h1>Diplomski rad</h1>
 				<h2>Nikola Milić</h2>
 			</header>
-			<MainExample localData={localData} />
+			<MainExample />
 		</div>
 	);
 }

@@ -48,21 +48,19 @@ class Post extends Component {
 
 	componentDidUpdate() {
 		if (this.state.action) {
-			this.updateData();
+			let data = [ ...this.props.data ];
+			let item = data.find((item) => item.id === this.state.id);
+			item.title = this.state.title;
+			item.body = this.state.body;
+			this.props.setData(data);
+			this.props.setAction('update');
+
 			return () => {
 				this.setState({ action: null });
 			};
 		}
 	}
 
-	updateData = () => {
-		let data = [ ...this.props.data ];
-		let item = data.find((item) => item.id === this.state.id);
-		item.title = this.state.title;
-		item.body = this.state.body;
-		this.props.setData(data);
-		this.props.setAction('update');
-	};
 
 	handleOnClick = () => {
 		this.props.setActivePost(this.props.postData.id);

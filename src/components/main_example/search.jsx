@@ -4,7 +4,7 @@ import { debounce } from '../../functions/functions';
 const Search = (props) => {
 	const ref = useRef('');
 
-	const handleInput = () => {
+	const handleInput = (e) => {
 		if (ref.current) {
 			let searchTerm = ref.current.value.toLowerCase().trim();
 			let posts = JSON.parse(localStorage.getItem('data'));
@@ -22,8 +22,8 @@ const Search = (props) => {
 				type="text"
 				placeholder="Pretraživanje"
 				className="search__input"
-				onChange={debounce(() => {
-					handleInput()
+				onChange={debounce((e) => {
+					handleInput(e)
 				}, 220)}
 			/>
 		</form>

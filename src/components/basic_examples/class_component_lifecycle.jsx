@@ -12,6 +12,12 @@ class ClassComponentLifecycle extends Component {
 		this.setState({ mounted: true });
 	}
 
+	componentDidUpdate(prevState) {
+		if (this.state !== prevState) {
+			this.setState({value: 'update'})
+		}
+	}
+
 	render() {
 		if (this.state.mounted) {
 			return (
