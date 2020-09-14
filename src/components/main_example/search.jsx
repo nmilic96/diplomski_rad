@@ -11,6 +11,7 @@ const Search = (props) => {
 			let filteredPosts = posts.filter(
 				(item) => item.title.toLowerCase().includes(searchTerm) || item.body.toLowerCase().includes(searchTerm)
 			);
+			
 			props.setData(filteredPosts);
 		}
 	};

@@ -9,6 +9,7 @@ const Index = () => {
 	const [ data, setData ] = useState([]);
 	const [ activePost, setActivePost ] = useState(null);
 	const [ action, setAction ] = useState(null);
+	const localData = JSON.parse(localStorage.getItem('data'));
 
 	useEffect(() => {
 		if (!localStorage.getItem('data')) {
@@ -33,24 +34,24 @@ const Index = () => {
 	);
 
 	const addNewPost = () => {
+		setAction('add');
 		const handlePostId = (items) => {
 			let ids = [ ...items ].map((item) => item.id);
 			return (ids = Math.max(...ids) + 1);
 		};
 
 		let newPost = {
-			id: handlePostId(data),
+			id: handlePostId(localData),
 			title: 'Nova objava',
 			body: ''
 		};
 
-		let newData = [ newPost, ...data ];
+		let newData = [ newPost, ...localData ];
 		setData(newData);
-		setAction('add');
 	};
 
 	const removePost = (index) => {
-		let filteredPosts = data.filter((item) => item.id !== index);
+		let filteredPosts = localData.filter((item) => item.id !== index);
 		setData(filteredPosts);
 		setAction('remove');
 	};
