@@ -59,6 +59,12 @@ small {
   font-size: calc(6px + 2vmin);
   color: white;
   padding: 1.25rem 3rem;
+
+  @media screen and (max-width: 640px) {
+    padding: 1.25rem;
+    font-size: calc(3px + 2vmin);
+    justify-content: space-between;
+  }
 }
 
 .App-header h1 {
@@ -78,6 +84,7 @@ small {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -96,6 +103,10 @@ small {
   max-width: 50rem;
   margin: 0 auto;
   padding: 5rem 1.25rem;
+
+  @media screen and (max-width: 640px) {
+    padding: 1.25rem;
+  }
 }
 
 .row {
@@ -103,6 +114,20 @@ small {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (max-width: 640px) {
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .btn {
+      margin: 0;
+      font-size: 0.625rem;
+      padding: 1rem 0.625rem;
+      width: 100%;
+    }
+  }
 }
 
 .post {
@@ -116,8 +141,11 @@ small {
     border-color: $color-primary;
   }
 
-  h3, p {
-    input, textarea {
+  h3,
+  p {
+
+    input,
+    textarea {
       font-size: inherit;
       line-height: inherit;
       border: none;
@@ -129,7 +157,8 @@ small {
       padding: 0;
       resize: none;
 
-      &:active, &:focus {
+      &:active,
+      &:focus {
         outline: 1px dashed rgba($color-primary, 0.5);
       }
     }
@@ -217,11 +246,39 @@ button {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
+  @media screen and (max-width: 640px) {
+    width: 100%;
+
+    > div {
+      width: 100%;
+      display: flex;
+      margin-bottom: 0.625rem;
+
+      .btn {
+        margin: 1/2*0.625rem;
+        margin-bottom: 0;
+      
+
+        &:nth-child(1) {
+          margin-left: 0;
+        }
+
+        &:nth-last-child(1) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
 }
 
 .search {
   display: flex;
   margin-bottom: 1.5rem;
+
+  @media screen and (max-width: 640px) {
+    margin-bottom: 0.625rem;
+  }
 }
 
 .search__input {
@@ -233,7 +290,8 @@ button {
   border: 1px solid $color-gray;
   border-radius: 0.25rem;
 
-  &:focus, &:active {
+  &:focus,
+  &:active {
     border-color: $color-primary;
   }
 }
